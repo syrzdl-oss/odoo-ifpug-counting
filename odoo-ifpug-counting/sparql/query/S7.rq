@@ -1,0 +1,24 @@
+# S7 - Assertion: every transaction function has at least one declarer (functions = withDeclarer).
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?type
+       (COUNT(DISTINCT ?fn) AS ?functions)
+       (COUNT(DISTINCT ?withD) AS ?withDeclarer)
+       (MAX(?nd) AS ?maxDeclarers)
+WHERE {
+  GRAPH <urn:functions> {
+    ?fn a ?cls .
+    FILTER(?cls IN (:ILF, :EIF, :EI, :EO, :EQ))
+    OPTIONAL {
+      ?fn :declaredBy ?d .
+      BIND(?fn AS ?withD)
+      { SELECT ?fn (COUNT(DISTINCT ?d2) AS ?nd) WHERE {
+          ?fn :declaredBy ?d2 } GROUP BY ?fn }
+    }
+  }
+  BIND(STRAFTER(STR(?cls), "#") AS ?type)
+}
+GROUP BY ?type
+ORDER BY ?type

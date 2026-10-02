@@ -1,0 +1,27 @@
+@prefix : <http://example.org/odoo-ifpug#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:calib_button_EI a :CalibrationStat ;
+    :entryKind "button" ; :txCategory "EI" ;
+    :pValue "0.2222"^^xsd:decimal ;
+    :mValue "3.519"^^xsd:decimal .
+:calib_button_EO a :CalibrationStat ;
+    :entryKind "button" ; :txCategory "EO" ;
+    :pValue "0.0082"^^xsd:decimal ;
+    :mValue "4.000"^^xsd:decimal .
+:calib_route_EI a :CalibrationStat ;
+    :entryKind "route" ; :txCategory "EI" ;
+    :pValue "0.3846"^^xsd:decimal ;
+    :mValue "3.450"^^xsd:decimal .
+:calib_route_EO a :CalibrationStat ;
+    :entryKind "route" ; :txCategory "EO" ;
+    :pValue "0.2885"^^xsd:decimal ;
+    :mValue "4.733"^^xsd:decimal .
+:calib_route_EQ a :CalibrationStat ;
+    :entryKind "route" ; :txCategory "EQ" ;
+    :pValue "0.1731"^^xsd:decimal ;
+    :mValue "3.111"^^xsd:decimal .
+:calib_server_EI a :CalibrationStat ;
+    :entryKind "server" ; :txCategory "EI" ;
+    :pValue "0.1961"^^xsd:decimal ;
+    :mValue "3.000"^^xsd:decimal .

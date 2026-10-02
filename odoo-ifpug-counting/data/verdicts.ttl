@@ -1,0 +1,2943 @@
+@prefix : <http://example.org/odoo-ifpug#> .
+
+:btn_crm_lead__action_assign_partner :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "partner_id" ;
+    :aiFtrTable2 "crm.lead",
+        "res.partner" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "action_assign_partner assigns a partner to lead, updating partner_id field on crm.lead." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_crm_lead__action_generate_leads :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method name suggests wizard/action; body unavailable, cannot confirm data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__action_open_livechat :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_livechat opens a livechat window/widget; no business data change, forward to chat UI." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__action_redirect_to_livechat_sessions :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method name suggests redirect to livechat sessions view; no body confirms, but naming indicates act_window/open target." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__action_redirect_to_page_views :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "method name action_redirect_to_page_views opens another view; no data change" ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__action_restore :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "active",
+        "automated_probability",
+        "probability" ;
+    :aiFtrTable2 "crm.lead" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Reactivates lost leads, unarchives them, and restores probability from automated_probability, producing persistent user-visible business state changes." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_crm_lead__action_sale_quotations_new :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_sale_quotations_new opens a quotation wizard/window; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__action_schedule_meeting :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening calendar event view; no direct data write." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__action_set_won_rainbowman :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "_message",
+        "state" ;
+    :aiFtrTable2 "crm.lead",
+        "res.users" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Calls action_set_won to update lead state and returns rainbow effect notification." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_crm_lead__action_show_potential_duplicates :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict to open kanban of duplicate leads; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__action_view_sale_order :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_sale_order opens sale order records; counts at target, not here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__action_view_sale_quotation :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_sale_quotation returns act_window to quotation list; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__iap_enrich :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "iap_enrich triggers an IAP service call to enrich lead data; without body, likely returns wizard/redirect rather than direct write." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__mail_action_blacklist_remove :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method only returns an act_window dict to open the blacklist-removal wizard; the wizard itself is counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lead__phone_action_blacklist_remove :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict to open the phone.blacklist.remove wizard; no direct data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_crm_lost_reason__action_lost_leads :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open crm.lead list; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_fleet_vehicle__action_accept_driver_change :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "driver_id",
+        "future_driver_id",
+        "plan_to_change_bike",
+        "plan_to_change_car" ;
+    :aiFtrTable2 "fleet.vehicle" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button reassigns drivers across multiple fleet.vehicle records, modifying driver_id, future_driver_id, and plan flags." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_fleet_vehicle__action_open_employee :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_employee on fleet.vehicle opens a related employee record; not a self-contained transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_fleet_vehicle__action_open_odometer_report :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Opens an odometer report action via ir.actions.actions; returns act_window dict." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_fleet_vehicle__action_view_bills :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_bills opens a list of bills; target transaction counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_fleet_vehicle__open_assignation_logs :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening another model; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_fleet_vehicle__return_action_to_open :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method only builds and returns an act_window dict to open another view; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_fleet_vehicle_log_contract__action_open_employee :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_employee on log contract likely returns act_window to open employee form; no data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_fleet_vehicle_log_services__action_open_account_move :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Name implies opening account_move wizard/window; no code visible; forward transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_fleet_vehicle_model__action_model_vehicle :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open fleet.vehicle list/form; no data is stored or derived here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_fleet_vehicle_model_brand__action_brand_model :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening fleet.vehicle.model list; no data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_department__action_employee_from_department :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns act_window dict opening employee list; no data change, just navigation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_department__action_plan_from_department :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening mail.activity.plan; no data written here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_create_user :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open a wizard; no data is changed here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_open_allocation_wizard :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Creates wizard record only to return act_window opening it; target wizard counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_open_courses :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_courses name implies launching a wizard/action window; body unavailable but semantics suggest forward." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_open_employee_cars :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method name 'action_open_employee_cars' strongly implies an act_window redirect; body unavailable." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_open_last_month_attendances :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_* method on hr.employee likely returns an act_window to a wizard/list; counts as forward navigation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_open_versions :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns ir.actions.act_window dict opening hr.version list; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_open_work_entries :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_work_entries opens work entries view; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_related_contacts :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open res.partner; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_time_off_dashboard :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Name suggests opening time-off dashboard; body unavailable but name implies forward to another view." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_timesheet_from_employee :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Name suggests opening timesheet view/wizard from employee; body unavailable, likely returns action." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_employee__action_toggle_primary_bank_account_trust :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "primary_bank_account_id.allow_out_payment" ;
+    :aiFtrTable2 "hr.employee",
+        "res.partner.bank" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Toggles the primary bank account's allow_out_payment flag, changing stored business data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_hr_employee__generate_random_barcode :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "barcode" ;
+    :aiFtrTable2 "hr.employee" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button generates and writes a random barcode to employee record." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_hr_employee__open_barcode_scanner :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_barcode_scanner opens a barcode scanner wizard/window; counted at target." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_job__action_open_activities :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_activities opens a window listing activities; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_job__action_open_attachments :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_attachments typically returns act_window to open attachments; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_hr_job__action_open_employees :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_employees on hr.job is a standard act_window opening employee list, no self-contained transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_contact__action_add_to_mailing_list :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening another wizard; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_contact__action_import :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening the mailing contact import wizard; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_contact__mail_action_blacklist_remove :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict to open a wizard; no business data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_contact__phone_action_blacklist_remove :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "phone_action_blacklist_remove likely opens a wizard/redirect; no body to confirm, but name suggests navigation, not data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_list__action_open_import :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method returns an act_window dict opening the contact import wizard; no direct data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_list__action_send_mailing :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening the mailing composer; no business data is stored or derived here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_list__action_send_mailing_sms :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_send_mailing_sms opens the SMS mailing composition wizard; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_list__action_view_contacts :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening another view; target action counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_list__action_view_contacts_blacklisted :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening a contacts list view; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_list__action_view_contacts_bouncing :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening another view; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_list__action_view_contacts_opt_out :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening a contacts list view; no data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_list__action_view_mailings :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict; no data change, just opens another action." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_buy_sms_credits :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Buy SMS credits typically opens an external/online wizard or payment flow, not a self-contained transactional process." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_cancel :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "next_departure",
+        "schedule_date",
+        "schedule_type",
+        "state" ;
+    :aiFtrTable2 "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button cancels a mailing by resetting state to draft and clearing schedule fields." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mailing_mailing__action_compare_versions :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening a list of mailings; no data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_duplicate :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Creates a copy record then returns an act_window dict to open it; the duplication is a side-effect, the primary purpose is forward navigation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_launch :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "schedule_type" ;
+    :aiFtrTable2 "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Sets schedule_type to 'now' and triggers queuing, changing stored business state on mailing.mailing." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mailing_mailing__action_put_in_queue :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "schedule_date",
+        "state" ;
+    :aiFtrTable2 "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Writes state to in_queue and triggers mail cron; primary user-visible outcome is state change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mailing_mailing__action_redirect_to_invoiced :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method name suggests navigation to invoiced view; acts as a redirect, no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_redirect_to_leads_and_opportunities :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method name 'action_redirect_to_leads_and_opportunities' suggests it opens another window/action; no body visible." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_redirect_to_quotations :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "name suggests redirect to quotations; no body, likely returns act_window → forward" ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_reload :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "unreachable" ;
+    :aiReasons2 "Method body is 'pass' — dead code, performs no business operation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_remove_favorite :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "_message",
+        "favorite" ;
+    :aiFtrTable2 "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Sets favorite=False on the mailing and returns notification; primary intent is state change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mailing_mailing__action_retry_failed :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "mail.mail",
+        "mailing.mailing",
+        "mailing.trace" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Deletes failed mails/traces and re-queues the mailing, materially changing stored data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mailing_mailing__action_schedule :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening a schedule-date wizard; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_select_as_winner :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "ab_testing_pc",
+        "ab_testing_winner_mailing_id",
+        "name",
+        "state" ;
+    :aiFtrTable2 "mailing.mailing",
+        "utm.campaign" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Creates a final mailing copy, sets winner on campaign, launches it — changes stored business data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mailing_mailing__action_send_mail :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Thin wrapper that delegates to _action_send_mail; the actual transactional work is counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_send_winner_mailing :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "final_mailing_id",
+        "state",
+        "winner_selection" ;
+    :aiFtrTable2 "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Action selects A/B testing winner mailing and writes winner-related state changes to the campaign mailings." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mailing_mailing__action_set_favorite :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "_message",
+        "favorite" ;
+    :aiFtrTable2 "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Sets favorite=True on mailing record and returns notification; primary intent is storing a user preference." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mailing_mailing__action_test :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening a test mailing wizard; target is counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_update_cards :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "unreachable" ;
+    :aiReasons2 "No body; method name alone does not establish a user-meaningful elementary process." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_bounced :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict to view bounced documents; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_clicked :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Delegates to _action_view_documents_filtered which returns an act_window; this is a forwarder." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_delivered :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Delegates to a helper that returns an act_window dict opening a filtered document view; no direct data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_link_trackers :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open link.tracker list; no data change, target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_mailing_contacts :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method only returns an ir.actions.act_window dict opening a contacts list view; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_opened :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_opened delegates to _action_view_documents_filtered which returns an act_window to view opened tracking." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_replied :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Delegates to _action_view_documents_filtered which returns an action/window dict; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_traces_canceled :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method returns an act_window dict delegating to _action_view_traces_filtered; just opens a filtered view." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_traces_failed :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button delegates to _action_view_traces_filtered, returning an act_window; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_traces_process :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button delegates to _action_view_traces_filtered which returns an act_window; only opens a view." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_traces_scheduled :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window to view scheduled traces; no data change, just opens another view." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_mailing__action_view_traces_sent :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button only delegates to helper returning an act_window; target view counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mailing_trace__action_view_contact :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict to open another record; no business data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_bom__action_compute_bom_days :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "_message",
+        "days_to_prepare_mo" ;
+    :aiFtrTable2 "mrp.bom",
+        "report.mrp.report_bom_structure",
+        "stock.warehouse" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Writes computed days_to_prepare on each BOM; reads warehouse and BOM report data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_bom__action_open_operation_form :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening mrp.routing.workcenter form; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_bom_byproduct__action_add_from_catalog :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button browses context and forwards call to another model's action_add_from_catalog; opener only, target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_bom_line__action_add_from_catalog :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method only browses a BOM and forwards to bom.action_add_from_catalog; opens catalog, no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_bom_line__action_see_attachments :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening product.document attachments view; no business data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_assign :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "mrp.production",
+        "stock.move" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Assigns raw material moves, updating reservation state on stock moves and production." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__action_cancel :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "mrp.production",
+        "procurement.order",
+        "stock.move" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Cancels manufacturing orders, unfinished stock moves, and sets procurement orders to exception; changes state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__action_clear_lot_producing_ids :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "lot_producing_ids",
+        "qty_producing" ;
+    :aiFtrTable2 "mrp.production" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button clears assigned lots and resets produced qty, writing user-visible fields." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__action_confirm :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "consumption",
+        "product_qty",
+        "product_uom",
+        "product_uom_id",
+        "product_uom_qty",
+        "state" ;
+    :aiFtrTable2 "mrp.bom",
+        "mrp.production",
+        "mrp.workorder",
+        "stock.move",
+        "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Confirms MO: writes state, adjusts UoM/qty, confirms moves and workorders, triggers pickings." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__action_generate_bom :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening a new BoM form view; no data is written here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_generate_serial :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "lot_producing_ids",
+        "product_qty",
+        "product_tracking",
+        "qty_producing" ;
+    :aiFtrTable2 "mrp.production",
+        "stock.lot" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button generates lot/serial numbers for production, writing lot_producing_ids and qty_producing." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__action_open_project :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_open_project likely opens another window/wizard; no body to confirm data mutation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_product_forecast_report :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button returns act_window dict from product.product forecast action; opens another view, no direct data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_see_move_scrap :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict to open stock.scrap list; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_start :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "mrp.production" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button transitions manufacturing order state from confirmed to progress." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__action_update_bom :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "bom_id",
+        "is_outdated_bom" ;
+    :aiFtrTable2 "mrp.production" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Links BOM to production and clears outdated flag, modifying stored business data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__action_view_mo_delivery :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "The button only constructs an action to open related stock pickings; retrieval and presentation are counted with the target transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_move_wip :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_move_wip opens a stock move view; no data change here, target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_mrp_production_backorders :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening a list of backorder MOs; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_mrp_production_childs :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to view child MOs; no data change, pure navigation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_mrp_production_sources :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open MOs; no data change or derivation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_mrp_production_unbuilds :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns act_window dict to open unbuilds list; no data change, just navigates." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_purchase_orders :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_purchase_orders opens a window action; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_reception_report :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open another action; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_repair_orders :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "The repair-orders action likely opens or navigates to another Odoo view; its target is counted elsewhere, avoiding double-counting." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_sale_orders :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_sale_orders returns act_window to open sale orders list; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__action_view_serial_numbers :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open Serial Numbers view; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__button_mark_done :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "date_finished",
+        "is_locked",
+        "move_finished_ids.state",
+        "move_raw_ids.state",
+        "priority",
+        "product_uom_qty",
+        "state" ;
+    :aiFtrTable2 "mrp.production",
+        "mrp.production.backorder",
+        "mrp.workorder",
+        "stock.move" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button marks MOs done, posting inventory, writing state/date/priority/lock and splitlines, a clear business transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__button_plan :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state",
+        "workorder_ids" ;
+    :aiFtrTable2 "mrp.production",
+        "mrp.workorder" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Confirms draft MOs, plans work orders, changes state and creates workorder records." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__button_unbuild :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening the mrp.unbuild wizard; no data is stored here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_production__button_unplan :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "date_finished",
+        "date_start",
+        "is_planned" ;
+    :aiFtrTable2 "mrp.production",
+        "mrp.workorder" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Unplans manufacturing order by clearing workorder dates and is_planned flag after validation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_production__do_unreserve :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "mrp.production",
+        "stock.move" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "do_unreserve unreserves raw and finished moves, changing their state to 'assigned'." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_unbuild__action_validate :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns act_window dict to wizard or delegates to action_unbuild; no direct data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_workcenter__action_show_operations :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.actions dict opening another window; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_workcenter__action_work_order :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns act_window dict for action_work_orders; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_workcenter__action_work_order_alternatives :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening another action; no data change or presentation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_workcenter_productivity__button_block :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "button_block delegates to end_all(); no UI outcome of its own, just triggers another process." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_workorder__action_open_wizard :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an action dictionary that opens the manufacturing order form for the current work order; it performs no data retrieval or modification itself." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_workorder__action_see_move_scrap :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening the stock scrap list; target is counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_mrp_workorder__button_finish :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "costs_hour",
+        "date_finished",
+        "date_start",
+        "picked",
+        "qty_produced",
+        "quantity_done",
+        "state" ;
+    :aiFtrTable2 "mrp.production",
+        "mrp.production.move_byproduct_ids",
+        "mrp.workorder",
+        "mrp.workorder.move_raw_ids" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Finishes work orders: writes state, dates, quantities, and picks moves. User-meaningful state transition with data writes." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_workorder__button_pending :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "mrp.workorder" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "button_pending calls end_previous which transitions workorder state; primary user-visible effect is state change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_mrp_workorder__button_start :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "date_finished",
+        "date_start",
+        "leave_id",
+        "production_id.date_start",
+        "qty_producing",
+        "state" ;
+    :aiFtrTable2 "mrp.production",
+        "mrp.workcenter.productivity",
+        "mrp.workorder",
+        "resource.calendar.leaves" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button starts work order, writes state/dates, creates productivity/leave records; clearly an elementary EI transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_pos_config__action_close_kiosk_session :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Likely opens kiosk close wizard/act_window; body unavailable, name suggests session-close UI action." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_config__action_open_wizard :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "The method name suggests it only opens a wizard; the target transaction is counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_config__close_ui :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "duplicate" ;
+    :aiReasons2 "close_ui is a thin alias that simply delegates to open_ui in the same module." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_config__open_existing_session_cb :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button delegates to _open_session, which opens another window/action; counted at target." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_config__open_ui :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "config_id",
+        "current_session_id" ;
+    :aiFtrTable2 "pos.config",
+        "pos.session" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Opens POS session, creates/validates session state, persists config data for UI launch." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_pos_config__preview_self_order_app :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "'preview_self_order_app' on pos.config opens an external preview/URL; no business data stored or derived." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__action_create_invoices :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening a wizard; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__action_pos_order_invoice :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "account_move",
+        "to_invoice" ;
+    :aiFtrTable2 "account.move",
+        "pos.order",
+        "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button invoices POS order, writes to_invoice=True and generates account.move, materially changes business state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_pos_order__action_send_mail :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening mail.compose.message wizard; no business data changed here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__action_show_myinvois_documents :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_show_myinvois_documents opens MyInvois document list, a forward/navigation action." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__action_stock_picking :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening the pickings tree; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__action_view_invoice :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns ir.actions.act_window dict opening account.move views; no data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__action_view_refund_orders :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open refund orders list; no data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__action_view_refunded_order :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open a form view of the refunded order; no data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__action_view_sale_order :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_sale_order opens sale order view; body unavailable but name indicates act_window forward." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__button_l10n_jo_edi_pos :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Jordan EDI POS button likely opens/exports EDI wizard; code unavailable, forward by convention." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__l10n_es_edi_verifactu_button_send :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "_message",
+        "verifactu_sent",
+        "verifactu_state" ;
+    :aiFtrTable2 "l10n_es_edi_verifactu",
+        "pos.order" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Spanish VeriFactu EDI send button: transmits invoice data to tax authority and updates order state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_pos_order__l10n_es_tbai_retry_post :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Retry post likely opens/chains another posting action; no body visible to confirm stored data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__print_event_badges :aiCategory2 "EO" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "_message" ;
+    :aiFtrTable2 "pos.order" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Print event badges likely derives/renders badge output for pos order; body not visible." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_pos_order__print_event_tickets :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "print_event_tickets likely triggers a report/wizard for event ticket printing; counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_order__refund :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method only returns an ir.actions.act_window dict opening the refund wizard; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_payment_method__action_stripe_key :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_stripe_key typically opens Stripe API key wizard/redirect; no body visible to confirm." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_payment_method__force_pdv :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "technical" ;
+    :aiReasons2 "Body unavailable; 'force_pdv' on pos.payment.method is ambiguous, likely technical/forward; cannot confirm business transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_preset__action_open_linked_config :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns ir.actions.act_window dict opening pos.config list; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_preset__action_open_linked_orders :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open pos.order list; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_session__action_pos_session_closing_control :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "cash_register_balance_end_real",
+        "state",
+        "stop_at" ;
+    :aiFtrTable2 "pos.order",
+        "pos.session" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Closes POS session: validates state, writes stop_at/cash totals, triggers final close. EI primary intent." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_pos_session__action_show_payments_list :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening pos.payment list; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_session__action_stock_picking :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening the pickings tree; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_session__action_view_order :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open pos.order list; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_session__open_frontend_cb :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "open_frontend_cb simply calls config_id.open_ui(); UI opening is counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_session__show_cash_register :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening account.bank.statement.line list; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_pos_session__show_journal_items :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict to open account.move.line list; no data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_lot__action_lot_open_quants :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Sets context and delegates to stock.quant.action_view_quants; opens another view, counted at target." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_lot__action_lot_open_transfers :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening stock.picking list/form; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_move__action_add_from_catalog_byproduct :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method only forwards to action_add_from_catalog on mrp.production with context; no own data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_move__action_add_from_catalog_raw :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Only fetches context and forwards to action_add_from_catalog; no self-contained business process." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_move__action_add_from_catalog_repair :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_add_from_catalog_repair opens a catalog/product picker wizard; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_move__action_show_details :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns act_window dict opening a stock move details wizard; no data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_move__action_show_subcontract_details :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button opens subcontract details wizard; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_move_line__action_open_add_to_wave :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Name 'action_open_add_to_wave' suggests opening a wizard/window; body unavailable, likely returns act_window." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_move_line__action_put_in_pack :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "package_id",
+        "package_name",
+        "package_type_id",
+        "quantity",
+        "result_package_id" ;
+    :aiFtrTable2 "stock.move.line",
+        "stock.package" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button packs stock move lines into a package, writes result_package_id and quantities — self-contained EI." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_package__action_put_in_pack :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "package_dest_id",
+        "package_id",
+        "package_name",
+        "package_type_id" ;
+    :aiFtrTable2 "stock.move.line",
+        "stock.package" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button creates or assigns a package to move lines, writing package_dest_id and updating package chain." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_package__action_remove_package :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "move_line_ids",
+        "package_dest_id",
+        "product_uom_qty",
+        "result_package_id",
+        "state" ;
+    :aiFtrTable2 "stock.move",
+        "stock.move.line",
+        "stock.package" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button removes packages from destination container tree, unlinking/clearing move lines and packages. Clear EI." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_package__action_view_picking :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open picking list; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_package__unpack :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "child_package_ids/parent_package_id",
+        "quant_ids" ;
+    :aiFtrTable2 "stock.package",
+        "stock.quant" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Unpacks package: clears parent on child packages and moves quants out of container." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_package_history__action_show_package :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening stock.package form; no data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_assign :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "stock.move",
+        "stock.picking",
+        "stock.quant" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "action_assign reserves stock and changes picking/move states based on availability." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_picking__action_cancel :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "is_locked",
+        "state" ;
+    :aiFtrTable2 "stock.move",
+        "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Cancels pickings: locks them and cancels moves/states; changes stored business data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_picking__action_confirm :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "move_ids/state",
+        "state" ;
+    :aiFtrTable2 "stock.move",
+        "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Confirms picking, transitions draft moves and triggers scheduler — user-visible state change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_picking__action_detailed_operations :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Calls super and returns an act_window dict to open a wizard; only adds a context key." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_generate_l10n_tr_edispatch_xml :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "e-Dispatch XML generation likely opens/download action, forwarding to wizard or report." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_l10n_in_ewaybill_create :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button likely opens e-waybill wizard/returns act_window; not self-contained elementary process." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_l10n_ro_edi_stock_fetch_status :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method name suggests fetching/displaying external EDI status, no body available; likely an act_window/wizard opener." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_next_transfer :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict to open next transfer(s); no data is written or derived here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_picking_move_tree :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening a stock move list view; no data change or derivation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_put_in_pack :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "package_id",
+        "package_name",
+        "package_type_id",
+        "state" ;
+    :aiFtrTable2 "stock.move.line",
+        "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Packing changes stock move-line package assignments and related picking state or package details, producing a user-visible data update." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_picking__action_see_move_scrap :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening stock.scrap list filtered by picking; target is counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_see_package_histories :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening stock.package.history list; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_see_packages :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict to open Packages list; no data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_see_returns :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening stock.picking; no data change or derivation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_show_subcontract_details :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_show_subcontract_details is a standard Odoo pattern that opens a wizard/window; self-contained process not visible." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_view_batch :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method name suggests opening batch picking view; likely returns act_window dict." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_view_mrp_production :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns ir.actions.act_window dict opening Manufacturing Orders list/form; no data written or derived." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_view_reception_report :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening the reception report action; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__action_view_repairs :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_repairs returns act_window to repairs; counts at target, not here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__button_validate :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "backorder_id",
+        "date_done",
+        "product_uom_qty",
+        "quantity",
+        "state" ;
+    :aiFtrTable2 "stock.location",
+        "stock.move",
+        "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button_validate confirms, runs sanity checks, and calls _action_done to mark pickings done, changing stored state and quantities." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_picking__cancel_shipment :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "cancel_shipment likely opens a wizard or returns act_window; no body visible to confirm." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__do_print_picking :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "printed" ;
+    :aiFtrTable2 "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button writes 'printed' flag and prints report; primary intent is marking picked as printed." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_picking__do_unreserve :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "stock.move",
+        "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Unreserves moves, changing reservation state — user-visible business outcome." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_picking__l10n_ar_action_create_delivery_guide :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Name suggests opening a delivery-guide wizard/action; body unavailable, but typical pattern is act_window return." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__l10n_ar_action_send_delivery_guide :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method named send_delivery_guide typically triggers a wizard/act_window to issue an Argentine delivery guide." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__open_website_url :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button named open_website_url on stock.picking likely opens an external page; forward navigation, no data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking__print_return_label :aiCategory2 "EO" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "_message",
+        "return_label" ;
+    :aiFtrTable2 "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Print return label likely generates/aggregates a shipping label; body not visible." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_picking__send_to_shipper :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "send_to_shipper on stock.picking typically returns a carrier wizard action; no body visible." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking_type__action_batch :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_batch on picking type typically opens wizard/redirect; body unavailable, capped med." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking_type__get_action_picking_tree_ready :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening another view; target action counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_picking_type__get_repair_stock_picking_action_picking_type :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Method name suggests opening a picking-type action window; classic forward to an act_window." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_quant__action_apply_all :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening a wizard; no business data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_quant__action_apply_inventory :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening the stock.inventory.conflict wizard; otherwise calls _apply_inventory (counted elsewhere)." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_quant__action_clear_inventory_quantity :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "inventory_diff_quantity",
+        "inventory_quantity",
+        "inventory_quantity_set",
+        "user_id" ;
+    :aiFtrTable2 "stock.quant" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button clears inventory data on stock.quant: resets quantity, diff, flag, and user." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_quant__action_inventory_history :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening stock.move.line history list; no data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_quant__action_reset :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening a wizard; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_quant__action_stock_quant_relocate :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening stock.quant.relocate wizard; no data changed here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_quant__action_view_orderpoints :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict delegating to product.product action_view_orderpoints; counts as window-opening." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_quant__action_view_stock_moves :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening stock_move_line_action; no data change, just navigation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_scrap__action_get_stock_move_lines :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening another action; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_scrap__action_get_stock_picking :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns act_window dict opening picking tree; no data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_scrap__action_validate :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "scrap_qty",
+        "state" ;
+    :aiFtrTable2 "stock.scrap" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Validates scrap: checks quantity and either performs do_scrap (writes state) or warns user. Primary intent changes stored data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_warehouse__action_view_all_routes :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns ir.actions.act_window dict opening stock.route list; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_warehouse_orderpoint__action_product_forecast_report :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening the product forecast report; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_warehouse_orderpoint__action_remove_manual_qty_to_order :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "qty_to_order_manual" ;
+    :aiFtrTable2 "stock.warehouse.orderpoint" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Button writes qty_to_order_manual to 0, a stored business field on the orderpoint." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_warehouse_orderpoint__action_replenish :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "create_uid",
+        "product_max_qty",
+        "qty_forecast",
+        "qty_to_order",
+        "state",
+        "trigger" ;
+    :aiFtrTable2 "procurement.order",
+        "product.product",
+        "stock.warehouse.orderpoint" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Replenishment button triggers procurement orders and updates orderpoint quantities — a clear user-initiated EI transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_stock_warehouse_orderpoint__action_replenish_auto :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Sets trigger then delegates to action_replenish(), which is the counted transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_stock_warehouse_orderpoint__action_stock_replenishment_info :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Opens a replenishment info wizard via ir.actions.actions; the wizard is counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_question__copy :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "triggering_answer_ids" ;
+    :aiFtrTable2 "survey.question" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Copy override duplicates records and re-assigns triggering_answer_ids to preserve logic links." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_survey_survey__action_archive :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "active" ;
+    :aiFtrTable2 "gamification.badge",
+        "survey.survey" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Archives the survey and its certification badge, writing active=False on both." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_survey_survey__action_end_session :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "session_state",
+        "state" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Ends survey session and finalizes all user inputs; writes session_state and input state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_survey_survey__action_open_session_manager :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_url dict opening a session manager URL; no data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_result_survey :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns ir.actions.act_url opening a results page; no data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_send_survey :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening survey.invite wizard; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_start_session :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "questions_layout",
+        "session_question_id",
+        "session_start_time",
+        "session_state" ;
+    :aiFtrTable2 "survey.survey" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Writes session fields to start a survey session; primary intent is storing business state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_survey_survey__action_survey_preview_certification_template :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_url opening a certification preview page; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_survey_see_leads :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "'action_survey_see_leads' returns a window/action to view leads; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_survey_user_input :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening a survey responses view; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_survey_user_input_certified :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening another action; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_survey_user_input_completed :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_window dict opening survey user input list; no data change, target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_survey_view_slide_channels :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_survey_view_slide_channels name suggests opening a channels view; likely act_window forward, no visible code to confirm derivation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_test_survey :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_url dict opening a test survey page; no data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_survey__action_unarchive :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "active" ;
+    :aiFtrTable2 "gamification.badge",
+        "survey.survey" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Unarchives survey and its certification badge, sets active=True on both records." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:btn_survey_user_input__action_print_answers :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an ir.actions.act_url opening a print page; no data change, just navigation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_user_input__action_redirect_lead :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_redirect_lead suggests opening another action/wizard; no body available, counted as forward to avoid double-count." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_user_input__action_redirect_to_attempts :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict opening the survey attempts list; no data change or derivation here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:btn_survey_user_input__action_resend :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "email",
+        "partner_id",
+        "state" ;
+    :aiFtrTable2 "res.partner",
+        "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Re-triggers survey send for selected user_inputs; writes email/partner context and re-invokes action_send_survey, changing stored answer state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0031 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "_message",
+        "state" ;
+    :aiFtrTable2 "crm.lead" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Marks crm.lead as won, changing state and showing rainbowman notification." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0032 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "crm.lead" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Route marks a CRM lead as lost, writing state change via action_set_lost on crm.lead." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0033 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "partner_id",
+        "state" ;
+    :aiFtrTable2 "crm.lead" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "route triggers lead-to-opportunity conversion, mutating crm.lead state and partner_id" ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0117 :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Legacy route only redirects to the new /mailing/<id>/unsubscribe endpoint; no business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:rt_0118 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "email",
+        "feedback" ;
+    :aiFtrTable2 "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Renders unsubscription page with prepared values; retrieves subscription data and derives rendered content." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0119 :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "mailing_contact_state",
+        "opt_out" ;
+    :aiFtrTable2 "mailing.contact",
+        "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "delegates to mailing_unsubscribe which marks recipient opted-out; writes opt-out state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0120 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "document_id",
+        "email",
+        "hash_token",
+        "mailing_id",
+        "unsubscribed_lists" ;
+    :aiFtrTable2 "mailing.list",
+        "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Route renders a confirmation page with derived list of public unsubscribed lists; no data mutation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0121 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "document_id",
+        "email",
+        "hash_token",
+        "mailing_id" ;
+    :aiFtrTable2 "mailing.mailing",
+        "mailing.mailing.list" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Unsubscribe handler unsubscribes recipient from mailing list or document, changing stored subscription state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0122 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "document_id",
+        "email",
+        "hash_token",
+        "mailing_id" ;
+    :aiFtrTable2 "mailing.list",
+        "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Unsubscribe route writes to mailing contact/list subscription state based on user-provided token and email." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0123 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "list_ids",
+        "opt_out",
+        "subscription_ids" ;
+    :aiFtrTable2 "mailing.list",
+        "mailing.subscription" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Updates contact subscription opt-in/opt-out lists via mailing list controller, storing changes to mailing.subscription." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0124 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "_message",
+        "feedback",
+        "opt_out_reason_id" ;
+    :aiFtrTable2 "mail.blacklist",
+        "mailing.mailing",
+        "mailing.subscription",
+        "res.partner" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Receives user feedback and opt-out reason, writes to blocklist and subscription records, posts messages." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0125 :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Route only redirects to /mailing/my; no data read, write, or derivation occurs here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:rt_0126 :aiCategory2 "EO" ;
+    :aiConfidence2 "med" ;
+    :aiFtrTable2 "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Renders a generic placeholder template page for browser preview; no user data stored, page is static example." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0127 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "opened" ;
+    :aiFtrTable2 "mail.mail",
+        "mailing.trace" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Tracks email open event, writes opened flag to mailing.trace records matching the mail." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0128 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "link.tracker",
+        "link.tracker.click" ;
+    :aiFtrTable2 "link.tracker",
+        "link.tracker.click" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Records a click on tracked link, stores click data, then redirects to original URL." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0129 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "mass_mailing_reports" ;
+    :aiFtrTable2 "ir.config_parameter",
+        "mailing.mailing",
+        "res.users" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Deactivates mailing reports by writing a config parameter; user-visible setting change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0130 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "body_html",
+        "unsubscribe_url" ;
+    :aiFtrTable2 "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Renders mailing body HTML with derived unsubscribe URL; no stored data changed." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0131 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "_message",
+        "document_id",
+        "email",
+        "hash_token",
+        "mailing_id" ;
+    :aiFtrTable2 "mail.blacklist",
+        "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Stores a new mail.blacklist record via _add, user-meaningful blocklist write." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0132 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "document_id",
+        "email",
+        "hash_token",
+        "mailing_id",
+        "message" ;
+    :aiFtrTable2 "mail.blacklist",
+        "mailing.mailing" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Removes email from mail blacklist, writing a removal record with message; primary intent is data deletion." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0133 :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Route renders a preview template; no derivation or aggregation, just delegates to template render." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:rt_0134 :aiCategory2 "EQ" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "device_uuid",
+        "lang",
+        "user_context" ;
+    :aiFtrTable2 "ir.http",
+        "pos.config" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Route renders a customer-facing page retrieving pos.config session data without derivation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0135 :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "technical" ;
+    :aiReasons2 "Service worker file delivery; no business data stored or retrieved." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:rt_0136 :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "duplicate" ;
+    :aiReasons2 "Thin alias of pos_web; both routes share identical logic in same controller." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:rt_0137 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "access_token",
+        "fallback_nomenclature_id",
+        "from_backend",
+        "last_data_change",
+        "nomenclature_id",
+        "pos_config_id",
+        "pos_session_id",
+        "session_info",
+        "urls_to_cache",
+        "use_lna" ;
+    :aiFtrTable2 "ir.config_parameter",
+        "ir.http",
+        "pos.config",
+        "pos.session" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Route renders POS UI page, aggregates session/config data and computed values into rendered response." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0138 :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "technical" ;
+    :aiReasons2 "Ping/pong endpoint checks connectivity; no business data read, written, or derived." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:rt_0139 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "date_start",
+        "date_stop" ;
+    :aiFtrTable2 "report.point_of_sale.report_saledetails" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Renders a PDF sales details report aggregating POS data over a date range." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0140 :aiCategory2 "EQ" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "access_token",
+        "date_order",
+        "pos_reference",
+        "ticket_code" ;
+    :aiFtrTable2 "pos.order" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Route retrieves a pos.order by user-supplied lookup fields and redirects to ticket validation; primary intent is querying existing data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0141 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "access_token",
+        "country",
+        "extra_field_values",
+        "invalid_fields",
+        "invoice_required_fields",
+        "invoice_sending_methods",
+        "messages",
+        "partner_address",
+        "partner_required_fields",
+        "user_is_connected" ;
+    :aiFtrTable2 "account.move",
+        "pos.order",
+        "res.company",
+        "res.partner" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Route validates ticket form, derives/prefills partner & invoice fields, renders ticket validation screen with aggregated order context." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0142 :aiCategory2 "EQ" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "customer_display_bg_img",
+        "field",
+        "raw" ;
+    :aiFtrTable2 "pos.config" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Retrieves and serves a stored pos.config image field without changing data or deriving business information." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0165 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "_pdf",
+        "active_id",
+        "active_model",
+        "data",
+        "output_format",
+        "report_name" ;
+    :aiFtrTable2 "stock.traceability.report" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Generates a PDF report of stock traceability; derives/aggregates data and returns a formatted document for the user." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0166 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "answer_token",
+        "test_entry" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Creates a test answer record and redirects; primary effect is writing a new survey.user_input row." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0167 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "access_token",
+        "email",
+        "invite_token",
+        "partner_id",
+        "test_entry" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Creates a new survey answer record on retry, redirecting user to start it; primary intent is persisting business data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0168 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "answer_token",
+        "email",
+        "lang",
+        "survey_token" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Creates or resumes a survey answer record, sets language and cookie, persists answer." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0169 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "answer_token",
+        "state",
+        "survey_time_limit_reached",
+        "survey_token" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Retrieves survey and response data, conditionally marks a timed-out response done, and renders the survey page for the user." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0170 :aiCategory2 "EQ" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "background_image" ;
+    :aiFtrTable2 "survey.survey" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Reads survey background_image field and streams it as an HTTP image response; pure retrieval, no derivation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0171 :aiCategory2 "EQ" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "background_image" ;
+    :aiFtrTable2 "survey.question",
+        "survey.survey" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Retrieves background image blob of a survey section and streams it; no derivation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0172 :aiCategory2 "EQ" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "value_image" ;
+    :aiFtrTable2 "ir.binary",
+        "survey.question.answer",
+        "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Retrieves and streams a stored image from a survey suggested answer; no derivation." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0173 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "lang_id",
+        "state" ;
+    :aiFtrTable2 "res.lang",
+        "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Marks answer as in-progress and optionally sets language; changes stored user_input state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0174 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Marks session answer as in_progress (writes state) and returns next question HTML." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0175 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "answer_lines",
+        "comment",
+        "last_displayed_page_id",
+        "next_skipped_page_or_question",
+        "page_id",
+        "previous_page_id",
+        "question_id",
+        "state",
+        "survey_first_submitted" ;
+    :aiFtrTable2 "survey.question",
+        "survey.survey",
+        "survey.user_input",
+        "survey.user_input.line" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Submits survey page answers, validates, saves lines, and may mark done; primary intent is persisting user responses." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0176 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "answer",
+        "graph_data",
+        "questions_to_display",
+        "review",
+        "scoring_display_correction",
+        "survey" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input",
+        "survey.user_input.line" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Renders printable survey view with computed statistics graph and filtered questions for display." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0177 :aiCategory2 "EQ" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "page_title",
+        "preview_url" ;
+    :aiFtrTable2 "survey.survey" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Renders certification preview page with survey title and PDF URL; no data derivation or writes." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0178 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "_report_response" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Generates a certification preview report by creating a test answer, rendering report, then cleaning up." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0179 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "certification_pdf" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Generates and downloads a certification report for a succeeded attempt; derives PDF from stored attempt data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0180 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "leaderboard",
+        "question_and_page_data",
+        "search_failed",
+        "search_filters",
+        "search_finished",
+        "search_passed",
+        "survey",
+        "survey_data" ;
+    :aiFtrTable2 "survey.page",
+        "survey.question",
+        "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Route renders survey statistics page with derived/aggregated data including leaderboard." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0181 :aiCategory2 "EQ" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "answer",
+        "survey",
+        "survey_token" ;
+    :aiFtrTable2 "survey.survey" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Route fetches survey by token and renders session-management template; primary intent is retrieving and presenting stored survey data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0182 :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "background_image_url",
+        "question_start",
+        "session_question_id",
+        "session_question_start_time" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Updates session question and start time, sends bus notification, returns rendered next question — primary intent is changing stored session state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0183 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "create_date",
+        "question_id",
+        "results_aggregation",
+        "session_question_id",
+        "session_start_time",
+        "session_state",
+        "survey_id" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input.line" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Route fetches session question's user input lines and aggregates results via _prepare_question_results_values for AJAX display." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0184 :aiCategory2 "EO" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "animate",
+        "leaderboard_values" ;
+    :aiFtrTable2 "survey.survey",
+        "survey.user_input" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Renders leaderboard page by deriving aggregated scoring data from survey session attendees." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:rt_0185 :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Renders a static session-code entry page; no data retrieval or derivation, purely UI forward." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:rt_0186 :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Resolves a session code and redirects to survey_start URL; no data change, pure routing." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:rt_0187 :aiCategory2 "EQ" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "session_code",
+        "survey_url" ;
+    :aiFtrTable2 "survey.survey" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Validates a session code, fetches matching survey, and returns its start URL — a data-retrieval elementary process." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_crm_iap_enrich_action_enrich_mail :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "unreachable" ;
+    :aiReasons2 "Code body not available; cannot verify elementary process behavior." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_crm_mail_plugin_lead_creation_prefilled_action :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "unreachable" ;
+    :aiReasons2 "Code not extracted; cannot verify behavior of the referenced xmlid action." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_fleet_action_fleet_vehicle_send_mail :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "_message" ;
+    :aiFtrTable2 "fleet.vehicle",
+        "mail.mail" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "action_send_email sends an email from vehicle records; writes outgoing mail affecting business communication." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_hr_action_hr_employee_create_users :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "This snippet only calls action_create_users() and stores its result; the actual elementary process is counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_action_hr_employee_create_users_confirmation :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Calls action_create_users_confirmation() which opens a confirmation wizard; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_action_hr_employee_load_demo_data :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "technical" ;
+    :aiReasons2 "_load_demo_data is demo/seed loading, internal plumbing, not a user elementary process." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_presence_action_hr_employee_presence_absent :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "XMLID targets an act_window; server action likely opens another view/wizard without primary business data change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_presence_action_hr_employee_presence_log :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "XMLID targets an action window for presence logs; no code visible, standard menu/window action pattern." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_presence_action_hr_employee_presence_present :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action defined by xmlid opens a view/window; no business data change (forward)." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_presence_action_hr_employee_presence_sms :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "unreachable" ;
+    :aiReasons2 "Code field not extracted; cannot evaluate artifact body or behavior." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_presence_action_hr_employee_presence_time_off :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "XMLID action typically opens a view/wizard; no code visible to confirm business logic." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_recruitment_action_load_demo_data :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "technical" ;
+    :aiReasons2 "Demo data loader; not user-meaningful business transaction, code unavailable." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_recruitment_skills_action_applicant_search_applicant :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Server action identified by xmlid likely returns act_window to open applicant search; no code body visible." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_skills_action_open_skills_log_department :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Xmlid names a server action that opens another window; no code available, but name indicates forward dispatch." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_skills_action_print_employees_cv :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Action by xmlid; no code visible, likely opens wizard/report (forward)." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_hr_timesheet_unlink_employee_action :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "unreachable" ;
+    :aiReasons2 "Code field not extracted; cannot verify behavior of unlink_employee_action server action." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_l10n_tr_nilvera_edispatch_action_export_l10n_tr_nilvera_edispatch_list :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "XMLID resolves to a window action opening a list; code unavailable but locator indicates forward action." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_l10n_tr_nilvera_edispatch_action_mark_l10n_tr_nilvera_edispatch_status :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "No code provided; xmlid suggests a server action that likely opens a wizard for marking dispatch status." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_mrp_action_pause_workorders :aiCategory2 "EI" ;
+    :aiConfidence2 "low" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "mrp.workorder" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Single-line call to button_pending; body not visible, inferred state change on workorder." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_mrp_action_plan_with_components_availability :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Single call to action_plan_with_components_availability(); opens/plans, no direct data change visible." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_mrp_action_print_labels :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an action dict opening a label type wizard; no direct data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_mrp_action_production_order_lock_unlock :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "is_locked" ;
+    :aiFtrTable2 "mrp.production" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Toggles the is_locked field on production records, changing stored business state." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_mrp_action_production_order_mark_done :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns the action dict from button_mark_done; the actual data change is counted on the target transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_mrp_action_production_order_merge :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "merged_production_ids" ;
+    :aiFtrTable2 "mrp.production" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "action_merge merges productions into one, changing stored MRP data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_mrp_action_production_order_scrap :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Calls button_scrap() which opens a wizard — forward to a wizard transaction." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_mrp_action_production_order_split :aiConfidence2 "med" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_split returns a wizard/act_window to split production; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_mrp_action_start_workorders :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Button action delegates to button_start; target transaction counted elsewhere, not a standalone EI." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_mrp_mrp_production_action_unreserve_tree :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "technical" ;
+    :aiReasons2 "Snippet shows do_unreserve() invocation; not a full elementary process, likely internal state change." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_point_of_sale_model_pos_order_send_mail :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Only invokes action_send_mail on records; primary mail-send logic counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_point_of_sale_pos_order_set_cancel :aiCategory2 "EI" ;
+    :aiConfidence2 "low" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "pos.order" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Calls action_pos_order_cancel on pos.order; likely sets state to cancelled. Full body not visible." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_repair_action_create_repair_order :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "XMLID repair.action_create_repair_order is a server action/wizard opener; code unavailable, likely returns act_window." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_account_stock_move_action_adjust_valuation :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Single line invokes another method (action_adjust_valuation); no user-visible state change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_install_barcode :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an action redirecting to barcode installation; no business data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_print_labels :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Only calls action_open_label_type(), which opens another window/wizard — target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_replenishment :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Only sets context and calls action_open_orderpoints; returns an action window to another view." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_revert_inventory_adjustment :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_revert_inventory opens a wizard/act_window; target transaction counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_scrap :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Calls button_scrap() which opens a wizard; target counted elsewhere, double-count risk." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_stock_quant_relocate :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Calls another action method that opens an inventory tree view; forward-only." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_toggle_is_locked :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "is_locked" ;
+    :aiFtrTable2 "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Toggles lock state on stock picking records, changing stored business data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_stock_action_unreserve_picking :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "state" ;
+    :aiFtrTable2 "stock.move",
+        "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "do_unreserve releases reserved stock moves; changes reservation state on picking and moves." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_stock_action_validate_picking :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Code only invokes button_validate and returns its action dict; no business process performed here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_view_inventory_tree :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "action_view_inventory returns an act_window/wizard; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_view_quants :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Calls action_view_quants returning an act_window to open quant list; no business data change here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_action_view_set_quants_tree :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "inventory_diff_quantity",
+        "inventory_quantity" ;
+    :aiFtrTable2 "stock.move.line",
+        "stock.quant" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "Sets/writes inventory quantity on quants, creating stock move lines as needed." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_stock_action_view_set_to_zero_quants_tree :aiCategory2 "EI" ;
+    :aiConfidence2 "med" ;
+    :aiDetField2 "inventory_quantity_set",
+        "quantity" ;
+    :aiFtrTable2 "stock.quant" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "action_set_inventory_quantity_zero changes stored quantity on quants to zero." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_stock_click_dashboard_graph :aiConfidence2 "low" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Single call to get_action_click_graph likely returns act_window dict." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_method_action_picking_tree_incoming :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Calls and returns another action; just opens a tree view, counted at target." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_method_action_picking_tree_internal :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns an act_window dict to open a tree view; target counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_method_action_picking_tree_outgoing :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Returns action dict opening a tree view; counts on target view, not here." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+
+:sact_stock_stock_split_picking :aiCategory2 "EI" ;
+    :aiConfidence2 "high" ;
+    :aiDetField2 "move_ids" ;
+    :aiFtrTable2 "stock.move",
+        "stock.picking" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiReasons2 "action_split_transfer creates backorder or splits picking, modifying stored move/transfer data." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "yes" .
+
+:sact_survey_action_survey_print :aiConfidence2 "high" ;
+    :aiModel2 "MiniMax-M3" ;
+    :aiNoReason2 "forward" ;
+    :aiReasons2 "Code only calls action_print_survey() which opens another window/action; forward, counted elsewhere." ;
+    :aiRunId2 "m3-batch1" ;
+    :aiVerdict2 "no" .
+

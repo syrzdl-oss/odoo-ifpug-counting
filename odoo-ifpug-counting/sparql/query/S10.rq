@@ -1,0 +1,26 @@
+# S10 - System-level distribution by type and complexity; the total equals row "4 total" of S9.
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?type ?complexity (COUNT(*) AS ?functions) (SUM(?u) AS ?UFP)
+WHERE {
+  {
+    { SELECT ?k ?u ?type ?c0 WHERE {
+        { SELECT ?k (MAX(?score) AS ?s) WHERE {
+            GRAPH <urn:functions> { ?e a ?cls ; :ufp ?u0 ; :inModule ?h ; :onFile ?k . FILTER(?cls IN (:ILF, :EIF)) }
+            ?h :isApplication true .
+            BIND(?u0 + IF(?cls = :ILF, 1000, 0) AS ?score)
+          } GROUP BY ?k }
+        BIND(IF(?s >= 1000, ?s - 1000, ?s) AS ?u)
+        BIND(IF(?s >= 1000, "ILF", "EIF") AS ?type)
+        BIND(IF(?s >= 1000, IF(?u = 7, "low", IF(?u = 10, "average", "high")),
+                            IF(?u = 5, "low", IF(?u = 7, "average", "high"))) AS ?c0) } }
+    UNION
+    { SELECT DISTINCT ?k ?u ?c0 ?type WHERE {
+        GRAPH <urn:functions> { ?k a ?tc ; :ufp ?u ; :complexity ?c0 ; :declaredBy ?dm . FILTER(?tc IN (:EI, :EO, :EQ)) }
+        ?dm :isApplication true .
+        BIND(STRAFTER(STR(?tc), "#") AS ?type) } }
+  }
+  BIND(?c0 AS ?complexity)
+}
+GROUP BY ?type ?complexity
+ORDER BY ?type ?complexity

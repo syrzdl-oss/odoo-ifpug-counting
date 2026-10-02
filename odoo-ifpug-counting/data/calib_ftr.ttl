@@ -1,0 +1,13 @@
+@prefix : <http://example.org/odoo-ifpug#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Mean FTR measured statically on the development set; applied to all modules.
+
+:calib_ftr_eo_report a :CalibrationStat ;
+    :entryKind "eo_report" ; :txCategory "EO" ;
+    :meanFtr "3.5714"^^xsd:decimal .
+
+:calib_ftr_wizard a :CalibrationStat ;
+    :entryKind "wizard" ; :txCategory "EI" ;
+    :meanFtr "2.4118"^^xsd:decimal .
+

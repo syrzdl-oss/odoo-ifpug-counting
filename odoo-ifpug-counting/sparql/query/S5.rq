@@ -1,0 +1,8 @@
+# S5 - Function instances and UFP by IFPUG type and complexity (module level).
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?type ?complexity (COUNT(*) AS ?n) (SUM(?u) AS ?UFP)
+WHERE { GRAPH <urn:functions> { ?fn a ?type ; :complexity ?complexity ; :ufp ?u } }
+GROUP BY ?type ?complexity ORDER BY ?type ?complexity

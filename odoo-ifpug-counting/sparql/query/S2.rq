@@ -1,0 +1,8 @@
+# S2 - Function instances and UFP by IFPUG type (module level).
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?type (COUNT(*) AS ?items) (SUM(?u) AS ?UFP)
+WHERE { GRAPH <urn:functions> { ?fn a ?type ; :ufp ?u } }
+GROUP BY ?type ORDER BY ?type

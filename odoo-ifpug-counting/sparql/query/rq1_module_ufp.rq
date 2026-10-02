@@ -1,0 +1,27 @@
+# RQ1 - UFP per application module: A = declaration-side UFP (transactions attributed to the
+#       declaring module, data functions to host or maintainer); B = code-side estimates
+#       (button, route, server action); UFP = A + B.
+PREFIX : <http://example.org/odoo-ifpug#>
+
+SELECT ?module
+       (COALESCE(?A, 0) AS ?A_declarative)
+       (ROUND(COALESCE(?Bb, 0)) AS ?B_button) (ROUND(COALESCE(?Br, 0)) AS ?B_route) (ROUND(COALESCE(?Bs, 0)) AS ?B_server)
+       (ROUND(COALESCE(?A, 0) + COALESCE(?Bb, 0) + COALESCE(?Br, 0) + COALESCE(?Bs, 0)) AS ?UFP)
+WHERE {
+  ?mod a :Module ; :isApplication true .
+  BIND(STRAFTER(STR(?mod), "#module_") AS ?module)
+  OPTIONAL { SELECT ?mod (SUM(?w) AS ?A) WHERE {
+      SELECT DISTINCT ?mod ?fn ?w WHERE {
+        GRAPH <urn:functions> { ?fn :weight ?w .
+          { ?fn a ?dc . FILTER(?dc IN (:ILF, :EIF)) ?fn :inModule ?mod }
+          UNION
+          { ?fn a ?tc . FILTER(?tc IN (:EI, :EO, :EQ)) ?fn :declaredBy ?mod } }
+      } } GROUP BY ?mod }
+  OPTIONAL { SELECT ?mod (SUM(?w) AS ?Bb) WHERE {
+      GRAPH <urn:functions> { ?g a :EstimatedFunctionGroup ; :inModule ?mod ; :entryKind "button" ; :weight ?w } } GROUP BY ?mod }
+  OPTIONAL { SELECT ?mod (SUM(?w) AS ?Br) WHERE {
+      GRAPH <urn:functions> { ?g a :EstimatedFunctionGroup ; :inModule ?mod ; :entryKind "route" ; :weight ?w } } GROUP BY ?mod }
+  OPTIONAL { SELECT ?mod (SUM(?w) AS ?Bs) WHERE {
+      GRAPH <urn:functions> { ?g a :EstimatedFunctionGroup ; :inModule ?mod ; :entryKind "server" ; :weight ?w } } GROUP BY ?mod }
+}
+ORDER BY ?module

@@ -1,0 +1,10 @@
+# S4 - Every function instance with its DET, RET, FTR, complexity and UFP.
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?fn ?type ?onFile ?det ?retCount ?ftrCount ?complexity ?ufp
+WHERE { GRAPH <urn:functions> {
+  ?fn a ?type ; :onFile ?onFile ; :det ?det ; :complexity ?complexity ; :ufp ?ufp .
+  OPTIONAL { ?fn :retCount ?retCount } OPTIONAL { ?fn :ftrCount ?ftrCount } } }
+ORDER BY ?type ?fn

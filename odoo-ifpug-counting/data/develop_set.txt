@@ -1,0 +1,9 @@
+# Development set: modules on which the parameters are calibrated (AI verdicts, mean FTR).
+hr
+fleet
+mass_mailing
+survey
+point_of_sale
+crm
+stock
+mrp

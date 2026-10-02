@@ -1,0 +1,190 @@
+@prefix :     <http://example.org/odoo-ifpug#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# Ontology for IFPUG function point counting of Odoo from its declarative metadata.
+# Only the classes and properties used by the counting rules, the ledger, RQ1 and the
+# parameter scripts are declared. Metadata sources refer to tables of an installed Odoo
+# database (ir.*) or to the module source code.
+
+<http://example.org/odoo-ifpug> a owl:Ontology ;
+    rdfs:label "Odoo IFPUG counting ontology" .
+
+# ============================================================ classes: Odoo metadata
+:Module a owl:Class ;
+    rdfs:comment "An Odoo module. Source: ir.module.module." .
+:OdooModel a owl:Class ;
+    rdfs:comment "A data group: a model registered in ir.model." .
+:PersistentModel a owl:Class ; rdfs:subClassOf :OdooModel ;
+    rdfs:comment "A model stored as a database table." .
+:TransientModel a owl:Class ; rdfs:subClassOf :OdooModel ;
+    rdfs:comment "A model holding temporary records for a wizard (ir.model.transient)." .
+:AbstractModel a owl:Class ; rdfs:subClassOf :OdooModel ;
+    rdfs:comment "A model without its own table that supplies fields to other models (mixin)." .
+:OdooField a owl:Class ;
+    rdfs:comment "A field of a model. Source: ir.model.fields." .
+:OdooView a owl:Class ;
+    rdfs:comment "A view after its inheritance is applied. Source: ir.ui.view (type other than qweb)." .
+:QWebTemplate a owl:Class ;
+    rdfs:comment "A report template. Source: ir.ui.view of type qweb." .
+:WindowAction a owl:Class ;
+    rdfs:comment "An action that opens views of a model. Source: ir.actions.act_window." .
+:ReportAction a owl:Class ;
+    rdfs:comment "An action that prints a report. Source: ir.actions.report." .
+:ServerAction a owl:Class ;
+    rdfs:comment "An action that runs on the server. Source: ir.actions.server." .
+:ObjectButton a owl:Class ;
+    rdfs:comment "A button of type object in a view, calling a method of a model. Source: ir.ui.view.arch_db." .
+
+# ============================================================ classes: source code
+:HttpRoute a owl:Class ;
+    rdfs:comment "A website or portal entry point declared with @http.route in a controller." .
+
+# ============================================================ classes: parameters
+:CalibrationStat a owl:Class ;
+    rdfs:comment "A calibrated parameter cell: p and m per entry kind and category (from AI verdicts), or the mean FTR of report EOs or wizard EIs (static measurement)." .
+
+# ============================================================ classes: IFPUG functions
+:BFC a owl:Class ; rdfs:comment "IFPUG base functional component." .
+:DataFunction a owl:Class ; rdfs:subClassOf :BFC ; rdfs:comment "A logical file." .
+:TransactionFunction a owl:Class ; rdfs:subClassOf :BFC ; rdfs:comment "An elementary process." .
+:ILF a owl:Class ; rdfs:subClassOf :DataFunction ; rdfs:comment "Internal logical file." .
+:EIF a owl:Class ; rdfs:subClassOf :DataFunction ; rdfs:comment "External interface file." .
+:EI a owl:Class ; rdfs:subClassOf :TransactionFunction ; rdfs:comment "External input." .
+:EO a owl:Class ; rdfs:subClassOf :TransactionFunction ; rdfs:comment "External output." .
+:EQ a owl:Class ; rdfs:subClassOf :TransactionFunction ; rdfs:comment "External inquiry." .
+:EstimatedFunctionGroup a owl:Class ;
+    rdfs:comment "Code-side estimate for one module, entry kind and category: n x p x m." .
+
+# ============================================================ modules and models
+:isApplication a owl:DatatypeProperty ; rdfs:domain :Module ; rdfs:range xsd:boolean ;
+    rdfs:comment "Whether the module is an application. Source: ir.module.module.application." .
+:modelName a owl:DatatypeProperty ; rdfs:domain :OdooModel ; rdfs:range xsd:string ;
+    rdfs:comment "Technical model name. Source: ir.model.model." .
+:hostModule a owl:ObjectProperty ; rdfs:domain :OdooModel ; rdfs:range :Module ;
+    rdfs:comment "Module that defines the model. Source: ir.model.data.module of the model." .
+:foldedInto a owl:ObjectProperty ; rdfs:domain :OdooModel ; rdfs:range :OdooModel ;
+    rdfs:comment "The table is a subgroup (RET) of the target table. Derived from ir.model.inherit and ir.model.fields (relation, relation_field, required, on_delete)." .
+:eifField a owl:ObjectProperty ; rdfs:domain :OdooModel ; rdfs:range :OdooField ;
+    rdfs:comment "A field of another module's table exposed by this table through a visible related field. Derived from ir.model.fields.related." .
+:maintainedBy a owl:ObjectProperty ; rdfs:domain :OdooModel ; rdfs:range :Module ;
+    rdfs:comment "Application that maintains the table through a reachable form allowing creation. Materialised by sparql/update/1_maintainers.ru." .
+
+# ============================================================ fields
+:fieldName a owl:DatatypeProperty ; rdfs:domain :OdooField ; rdfs:range xsd:string ;
+    rdfs:comment "Source: ir.model.fields.name." .
+:belongsTo a owl:ObjectProperty ; rdfs:domain :OdooField ; rdfs:range :OdooModel ;
+    rdfs:comment "Source: ir.model.fields.model." .
+:ttype a owl:DatatypeProperty ; rdfs:domain :OdooField ; rdfs:range xsd:string ;
+    rdfs:comment "Field type. Source: ir.model.fields.ttype." .
+:relatesTo a owl:ObjectProperty ; rdfs:domain :OdooField ; rdfs:range :OdooModel ;
+    rdfs:comment "Target of a relational field. Source: ir.model.fields.relation." .
+:store a owl:DatatypeProperty ; rdfs:domain :OdooField ; rdfs:range xsd:boolean ;
+    rdfs:comment "Source: ir.model.fields.store." .
+:isComputed a owl:DatatypeProperty ; rdfs:domain :OdooField ; rdfs:range xsd:boolean ;
+    rdfs:comment "Source: ir.model.fields.compute is set." .
+:isRelated a owl:DatatypeProperty ; rdfs:domain :OdooField ; rdfs:range xsd:boolean ;
+    rdfs:comment "Source: ir.model.fields.related is set (includes fields delegated through _inherits)." .
+:isUserVisible a owl:DatatypeProperty ; rdfs:domain :OdooField ; rdfs:range xsd:boolean ;
+    rdfs:comment "The field appears, not invisible by a literal, in a view (including search views) or in a report output. Derived from ir.ui.view.arch_db." .
+
+# ============================================================ views
+:ofModel a owl:ObjectProperty ; rdfs:domain :OdooView ; rdfs:range :OdooModel ;
+    rdfs:comment "Source: ir.ui.view.model." .
+:viewType a owl:DatatypeProperty ; rdfs:domain :OdooView ; rdfs:range xsd:string ;
+    rdfs:comment "Source: ir.ui.view.type." .
+:viewDetField a owl:ObjectProperty ; rdfs:domain :OdooView ; rdfs:range :OdooField ;
+    rdfs:comment "A field shown by the merged view. Derived from ir.ui.view.arch_db." .
+:viewDetFieldNotOnCreate a owl:ObjectProperty ; rdfs:domain :OdooView ; rdfs:range :OdooField ;
+    rdfs:comment "A field of the view necessarily hidden when creating a record (invisible condition depending only on id)." .
+:viewDetFieldNotOnEdit a owl:ObjectProperty ; rdfs:domain :OdooView ; rdfs:range :OdooField ;
+    rdfs:comment "A field of the view necessarily hidden when editing an existing record." .
+:viewFtrRef a owl:ObjectProperty ; rdfs:domain :OdooView ; rdfs:range :OdooModel ;
+    rdfs:comment "A table referenced by the view through its fields (relation targets, delegated parents)." .
+:viewFtrRefNotOnCreate a owl:ObjectProperty ; rdfs:domain :OdooView ; rdfs:range :OdooModel ;
+    rdfs:comment "A table referenced only through fields hidden when creating." .
+:viewFtrRefNotOnEdit a owl:ObjectProperty ; rdfs:domain :OdooView ; rdfs:range :OdooModel ;
+    rdfs:comment "A table referenced only through fields hidden when editing." .
+:gateCreate a owl:DatatypeProperty ; rdfs:domain :OdooView ; rdfs:range xsd:boolean ;
+    rdfs:comment "The view allows creating records (root attribute create). Source: ir.ui.view.arch_db." .
+:gateWrite a owl:DatatypeProperty ; rdfs:domain :OdooView ; rdfs:range xsd:boolean ;
+    rdfs:comment "The view allows editing records (root attribute edit)." .
+:gateUnlink a owl:DatatypeProperty ; rdfs:domain :OdooView ; rdfs:range xsd:boolean ;
+    rdfs:comment "The view allows deleting records (root attribute delete)." .
+:hasButton a owl:ObjectProperty ; rdfs:domain :OdooView ; rdfs:range :ObjectButton ;
+    rdfs:comment "An object button shown by the view." .
+
+# ============================================================ report templates
+:nTField a owl:DatatypeProperty ; rdfs:domain :QWebTemplate ; rdfs:range xsd:integer ;
+    rdfs:comment "Number of t-field outputs in the template." .
+:nTEsc a owl:DatatypeProperty ; rdfs:domain :QWebTemplate ; rdfs:range xsd:integer ;
+    rdfs:comment "Number of t-esc and t-out outputs in the template." .
+:nOutputDistinct a owl:DatatypeProperty ; rdfs:domain :QWebTemplate ; rdfs:range xsd:integer ;
+    rdfs:comment "Distinct outputs of a report root template over its t-call closure, resolved by QWeb scoping: one per landing field, unresolvable outputs once per expression. Report EO DET = nOutputDistinct + 2." .
+:tCalls a owl:ObjectProperty ; rdfs:domain :QWebTemplate ; rdfs:range :QWebTemplate ;
+    rdfs:comment "A template called with t-call." .
+:templateDetField a owl:ObjectProperty ; rdfs:domain :QWebTemplate ; rdfs:range :OdooField ;
+    rdfs:comment "A field output by the report (root template, whole t-call closure)." .
+:templateFtrRef a owl:ObjectProperty ; rdfs:domain :QWebTemplate ; rdfs:range :OdooModel ;
+    rdfs:comment "A table read by the report: its model and every table traversed by resolvable output paths." .
+
+# ============================================================ actions and buttons
+:actsOn a owl:ObjectProperty ; rdfs:range :OdooModel ;
+    rdfs:comment "Model of an action. Source: act_window.res_model, report.model, server.model_id." .
+:usesView a owl:ObjectProperty ; rdfs:domain :WindowAction ; rdfs:range :OdooView ;
+    rdfs:comment "View selected for each view type the action provides: per-type binding (ir.actions.act_window.view), view_id, context <type>_view_ref, or the default view." .
+:viewModeToken a owl:DatatypeProperty ; rdfs:domain :WindowAction ; rdfs:range xsd:string ;
+    rdfs:comment "A view type listed in act_window.view_mode." .
+:reachKind a owl:DatatypeProperty ; rdfs:domain :WindowAction ; rdfs:range xsd:string ;
+    rdfs:comment "How users reach the action: menu (ir.ui.menu.action), button_action (button of type action), binding (binding_model_id), or none." .
+:declaredIn a owl:ObjectProperty ; rdfs:range :Module ;
+    rdfs:comment "Declaring module: ir.model.data.module for actions; for buttons, the module that first defines the called method (source code)." .
+:usesTemplate a owl:ObjectProperty ; rdfs:domain :ReportAction ; rdfs:range :QWebTemplate ;
+    rdfs:comment "Root template of the report (report_name = ir.ui.view.key)." .
+:srvState a owl:DatatypeProperty ; rdfs:domain :ServerAction ; rdfs:range xsd:string ;
+    rdfs:comment "Source: ir.actions.server.state; only code actions are candidates." .
+:xmlid a owl:DatatypeProperty ; rdfs:domain :ServerAction ; rdfs:range xsd:string ;
+    rdfs:comment "External identifier, used to find the code text of the action." .
+:srvCodeText a owl:DatatypeProperty ; rdfs:domain :ServerAction ; rdfs:range xsd:string ;
+    rdfs:comment "Code of the action (ir.actions.server.code), material for the AI verdict." .
+:onModel a owl:ObjectProperty ; rdfs:domain :ObjectButton ; rdfs:range :OdooModel ;
+    rdfs:comment "Model the button acts on (the view's model, or the relation of an embedded list)." .
+:buttonName a owl:DatatypeProperty ; rdfs:domain :ObjectButton ; rdfs:range xsd:string ;
+    rdfs:comment "Method called by the button (button name)." .
+:inModule a owl:ObjectProperty ; rdfs:range :Module ;
+    rdfs:comment "For a route: module of its controller. For a function instance: module it is counted in." .
+
+# ============================================================ parameters
+:entryKind a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "Entry kind: button, route or server (p, m); eo_report or wizard (mean FTR)." .
+:txCategory a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "Transaction category: EI, EO or EQ." .
+:pValue a owl:DatatypeProperty ; rdfs:domain :CalibrationStat ; rdfs:range xsd:decimal ;
+    rdfs:comment "Admission rate p: admitted candidates of the category / judged candidates of the kind." .
+:mValue a owl:DatatypeProperty ; rdfs:domain :CalibrationStat ; rdfs:range xsd:decimal ;
+    rdfs:comment "Mean UFP m of the admitted candidates." .
+:meanFtr a owl:DatatypeProperty ; rdfs:domain :CalibrationStat ; rdfs:range xsd:decimal ;
+    rdfs:comment "Mean FTR measured on the development set; rounded when applied." .
+
+# ============================================================ function instances (graph <urn:functions>)
+:onFile a owl:ObjectProperty ; rdfs:domain :BFC ; rdfs:range :OdooModel ;
+    rdfs:comment "The data group the function counts (ILF/EIF) or operates on (transactions)." .
+:declaredBy a owl:ObjectProperty ; rdfs:domain :TransactionFunction ; rdfs:range :Module ;
+    rdfs:comment "Module whose action declares the entry point; may have several values." .
+:byRule a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "Rule branch that produced the instance." .
+:eiOp a owl:DatatypeProperty ; rdfs:domain :EI ; rdfs:range xsd:string ;
+    rdfs:comment "create, write, unlink or wizard." .
+:det a owl:DatatypeProperty ; rdfs:domain :BFC ; rdfs:range xsd:integer ; rdfs:comment "Number of DETs." .
+:retCount a owl:DatatypeProperty ; rdfs:domain :DataFunction ; rdfs:range xsd:integer ; rdfs:comment "Number of RETs." .
+:ftrCount a owl:DatatypeProperty ; rdfs:domain :TransactionFunction ; rdfs:range xsd:integer ; rdfs:comment "Number of FTRs." .
+:complexity a owl:DatatypeProperty ; rdfs:domain :BFC ; rdfs:range xsd:string ; rdfs:comment "low, average or high." .
+:ufp a owl:DatatypeProperty ; rdfs:domain :BFC ; rdfs:range xsd:decimal ; rdfs:comment "Unadjusted function points." .
+:weight a owl:DatatypeProperty ; rdfs:range xsd:decimal ;
+    rdfs:comment "UFP of a function instance or of an estimate group." .
+:countingSide a owl:DatatypeProperty ; rdfs:range xsd:string ;
+    rdfs:comment "declarative (counted from declarations) or parameterized (code-side estimate)." .
+:nCandidates a owl:DatatypeProperty ; rdfs:domain :EstimatedFunctionGroup ; rdfs:range xsd:integer ;
+    rdfs:comment "Number of code-side candidates n of the module and entry kind." .

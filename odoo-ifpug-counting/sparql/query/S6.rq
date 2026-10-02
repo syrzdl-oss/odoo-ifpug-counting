@@ -1,0 +1,19 @@
+# S6 - UFP per declaring module and rule branch (transactions attributed to their declarers).
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?targetModule ?byRule (ROUND(SUM(?w)) AS ?UFP) (COUNT(*) AS ?items)
+WHERE {
+  { SELECT DISTINCT ?targetModule ?byRule ?fn ?w WHERE {
+      GRAPH <urn:functions> {
+        ?fn :byRule ?byRule ; :weight ?w .
+        { ?fn a ?dc . FILTER(?dc IN (:ILF, :EIF)) ?fn :inModule   ?targetModule }
+        UNION
+        { ?fn a ?tc . FILTER(?tc IN (:EI, :EO, :EQ)) ?fn :declaredBy ?targetModule }
+      }
+      ?targetModule :isApplication true .
+    } }
+}
+GROUP BY ?targetModule ?byRule
+ORDER BY ?targetModule ?byRule

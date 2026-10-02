@@ -1,0 +1,146 @@
+# Ledger - every function instance of one module with the names of its DETs, RETs and FTRs,
+# followed by the code-side estimate groups (candidates x p x m).
+# Usage: change the module in "VALUES ?mod { ... }" and run.
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?type ?table ?byRule ?eiOp ?complexity ?det ?ret ?ftr ?ufp
+       (COALESCE(?dFix, ?dILF, ?dEIF, ?dMaint, ?dWiz, ?dList, ?dAna, ?dEst, "") AS ?DET_names)
+       (COALESCE(?rILF, ?rEIF, "")                                      AS ?RET_names)
+       (COALESCE(?fFix, ?fMaint, ?fList, ?fAna, ?fCal, "")                AS ?FTR_names)
+WHERE {
+  VALUES ?mod { :module_sale_management }
+
+  {
+  GRAPH <urn:functions> {
+    ?fn rdf:type ?cls ; :onFile ?m ; :ufp ?ufp ; :byRule ?byRule ; :complexity ?complexity ; :det ?det .
+    OPTIONAL { ?fn :eiOp ?eiOp }
+    OPTIONAL { ?fn :retCount ?ret }
+    OPTIONAL { ?fn :ftrCount ?ftr }
+    FILTER(?cls IN (:ILF, :EIF, :EI, :EO, :EQ))
+    { ?fn rdf:type ?c1 ; :inModule ?mod . FILTER(?c1 IN (:ILF, :EIF)) }
+    UNION
+    { ?fn rdf:type ?c2 ; :declaredBy ?mod . FILTER(?c2 IN (:EI, :EO, :EQ)) }
+  }
+  BIND(STRAFTER(STR(?cls), "#") AS ?type)
+  ?m :modelName ?table .
+  BIND(?noD AS ?dFix)
+  BIND(IF(?byRule = "3_CRUD_u", ?table, ?noF) AS ?fFix)
+
+  OPTIONAL { SELECT ?fn (GROUP_CONCAT(DISTINCT ?n; separator=" · ") AS ?dILF) WHERE {
+      GRAPH <urn:functions> { ?fn rdf:type :ILF ; :onFile ?mm }
+      ?fd :belongsTo ?owner ; :fieldName ?fname ; :isUserVisible true .
+      ?owner :foldedInto? ?mm .
+      FILTER NOT EXISTS { ?fd :isRelated true }
+      FILTER NOT EXISTS { ?fd :isComputed true . FILTER NOT EXISTS { ?fd :store true } }
+      OPTIONAL { ?fd :ttype ?tt }
+      FILTER(!BOUND(?tt) || (?tt != "one2many" && ?tt != "many2many"))
+      FILTER NOT EXISTS { ?fd :relatesTo ?mm . ?owner :foldedInto ?mm }
+      OPTIONAL { ?fd :relatesTo ?rel . ?rel :modelName ?reln }
+      ?owner :modelName ?on .
+      BIND(IF(BOUND(?reln), CONCAT("→", ?reln), IF(?owner = ?mm, ?fname, CONCAT(?on, ".", ?fname))) AS ?n)
+    } GROUP BY ?fn }
+  OPTIONAL { SELECT ?fn (GROUP_CONCAT(DISTINCT ?cn; separator=" · ") AS ?rILF) WHERE {
+      GRAPH <urn:functions> { ?fn rdf:type :ILF ; :onFile ?mm }
+      ?ch :foldedInto ?mm ; :modelName ?cn .
+    } GROUP BY ?fn }
+
+  OPTIONAL { SELECT ?fn (CONCAT("[ref]", IF(COUNT(?n) > 0, CONCAT(" · ", GROUP_CONCAT(DISTINCT ?n; separator=" · ")), "")) AS ?dEIF) WHERE {
+      GRAPH <urn:functions> { ?fn rdf:type :EIF ; :onFile ?mm ; :inModule ?md }
+      OPTIONAL {
+        ?src :hostModule ?md ; :eifField ?f4 .
+        ?f4 :belongsTo ?ro ; :fieldName ?fnm . ?ro :modelName ?ron .
+        FILTER(?ro = ?mm || EXISTS { ?ro :foldedInto ?mm })
+      }
+      BIND(IF(?ro = ?mm, ?fnm, CONCAT(?ron, ".", ?fnm)) AS ?n)
+    } GROUP BY ?fn }
+  OPTIONAL { SELECT ?fn (GROUP_CONCAT(DISTINCT ?rn; separator=" · ") AS ?rEIF) WHERE {
+      GRAPH <urn:functions> { ?fn rdf:type :EIF ; :onFile ?mm ; :inModule ?md }
+      ?src :hostModule ?md ; :eifField ?f4 .
+      ?f4 :belongsTo ?ro . ?ro :modelName ?rn .
+      FILTER(?ro = ?mm || EXISTS { ?ro :foldedInto ?mm })
+    } GROUP BY ?fn }
+
+  OPTIONAL { SELECT ?fn (CONCAT(GROUP_CONCAT(DISTINCT ?n; separator=" · "), " · [action] · [message]") AS ?dMaint) WHERE {
+      GRAPH <urn:functions> { ?fn rdf:type :EI ; :byRule ?br ; :onFile ?mm . FILTER(?br IN ("3_CRUD_c", "3_CRUD_w", "3_CRUD_u")) }
+      BIND(IF(?br = "3_CRUD_c", "%23c%23", IF(?br = "3_CRUD_w", "%23w%23", "%23u%23")) AS ?sep)
+      BIND(IRI(REPLACE(REPLACE(REPLACE(STRAFTER(STR(?fn), ?sep), "%3A", ":"), "%2F", "/"), "%23", "#")) AS ?v)
+      ?v :viewDetField ?fd . ?fd :fieldName ?fn0 ; :belongsTo ?fo . ?fo :modelName ?fon .
+      FILTER(?br != "3_CRUD_c" || NOT EXISTS { ?v :viewDetFieldNotOnCreate ?fd })
+      FILTER(?br = "3_CRUD_c" || NOT EXISTS { ?v :viewDetFieldNotOnEdit ?fd })
+      FILTER NOT EXISTS { ?fd :ttype ?ct ; :relatesTo ?ch . ?ch :foldedInto ?mm .
+                          FILTER(?ct IN ("one2many", "many2many")) }
+      BIND(IF(?fo = ?mm, ?fn0, CONCAT(?fon, ".", ?fn0)) AS ?n)
+    } GROUP BY ?fn }
+  OPTIONAL { SELECT ?fn (GROUP_CONCAT(DISTINCT ?tn; separator=" · ") AS ?fMaint) WHERE {
+      GRAPH <urn:functions> { ?fn rdf:type :EI ; :byRule ?br ; :onFile ?mm . FILTER(?br IN ("3_CRUD_c", "3_CRUD_w")) }
+      BIND(IF(?br = "3_CRUD_c", "%23c%23", "%23w%23") AS ?sp5)
+      BIND(IRI(REPLACE(REPLACE(REPLACE(STRAFTER(STR(?fn), ?sp5), "%3A", ":"), "%2F", "/"), "%23", "#")) AS ?v5)
+      ?v5 :viewFtrRef ?t0 .
+      FILTER(?br != "3_CRUD_c" || NOT EXISTS { ?v5 :viewFtrRefNotOnCreate ?t0 })
+      FILTER(?br != "3_CRUD_w" || NOT EXISTS { ?v5 :viewFtrRefNotOnEdit ?t0 })
+      OPTIONAL { ?t0 :foldedInto ?tp } BIND(COALESCE(?tp, ?t0) AS ?t)
+      ?t rdf:type :PersistentModel ; :modelName ?tn .
+      FILTER(EXISTS { ?fv :belongsTo ?t ; :isUserVisible true } ||
+             EXISTS { ?dx rdf:type :WindowAction ; :actsOn ?t ; :reachKind ?rkx . FILTER(?rkx != "none") })
+    } GROUP BY ?fn }
+
+  OPTIONAL { SELECT ?fn (SAMPLE(?nm) AS ?dWiz) WHERE {
+      { SELECT ?fn ?v (CONCAT(GROUP_CONCAT(DISTINCT ?n; separator=" · "), " · [action] · [message]") AS ?nm)
+                      (COUNT(DISTINCT ?fd) + 2 AS ?dvv) WHERE {
+          GRAPH <urn:functions> { ?fn rdf:type :EI ; :byRule "7_Wizard_EI" ; :onFile ?mm }
+          ?a rdf:type :WindowAction ; :actsOn ?mm ; :reachKind ?k ; :usesView ?v . FILTER(?k != "none")
+          ?v :viewType "form" ; :viewDetField ?fd .
+          ?fd :fieldName ?fn0 ; :belongsTo ?fo . ?fo :modelName ?fon .
+          FILTER NOT EXISTS { ?fd :ttype ?ct ; :relatesTo ?ch . ?ch :foldedInto ?mm . FILTER(?ct IN ("one2many", "many2many")) }
+          BIND(IF(?fo = ?mm, ?fn0, CONCAT(?fon, ".", ?fn0)) AS ?n)
+        } GROUP BY ?fn ?v }
+      GRAPH <urn:functions> { ?fn :det ?dd }
+      FILTER(?dvv = ?dd)
+    } GROUP BY ?fn }
+
+  OPTIONAL { GRAPH <urn:functions> { ?fn rdf:type :EQ }
+             BIND(CONCAT(REPLACE(STRAFTER(STR(?fn), "%23EQ%23"), "%2C", " · "), " · [action] · [message]") AS ?dList) }
+  OPTIONAL { SELECT ?fn (SAMPLE(?names) AS ?fList) WHERE {
+      { SELECT ?fn ?a (GROUP_CONCAT(DISTINCT ?tn; separator=" · ") AS ?names) (COUNT(DISTINCT ?t) AS ?cnt) WHERE {
+          GRAPH <urn:functions> { ?fn rdf:type :EQ ; :onFile ?mm }
+          ?a rdf:type :WindowAction ; :actsOn ?mm ; :reachKind ?k ; :usesView ?v . FILTER(?k != "none")
+          ?v :viewType ?vt . FILTER(?vt IN ("list", "kanban"))
+          ?v :viewFtrRef ?t0 . OPTIONAL { ?t0 :foldedInto ?tp } BIND(COALESCE(?tp, ?t0) AS ?t) ?t :modelName ?tn .
+        } GROUP BY ?fn ?a }
+      { SELECT ?fn ?a ?key (COUNT(DISTINCT ?ldn) AS ?nl) (COUNT(DISTINCT ?hit) AS ?nh) WHERE {
+          GRAPH <urn:functions> { ?fn rdf:type :EQ ; :onFile ?mm }
+          BIND(REPLACE(STRAFTER(STR(?fn), "%23EQ%23"), "%2C", ",") AS ?key)
+          ?a rdf:type :WindowAction ; :actsOn ?mm ; :reachKind ?k ; :usesView ?v . FILTER(?k != "none")
+          ?v :viewType ?vt . FILTER(?vt IN ("list", "kanban"))
+          ?v :viewDetField ?ld . ?ld :fieldName ?ldn .
+          BIND(IF(CONTAINS(CONCAT(",", ?key, ","), CONCAT(",", ?ldn, ",")), ?ldn, ?nohit) AS ?hit)
+        } GROUP BY ?fn ?a ?key }
+      FILTER(?nl = ?nh && ?nl = (STRLEN(?key) - STRLEN(REPLACE(?key, ",", ""))) + 1)
+      GRAPH <urn:functions> { ?fn :ftrCount ?ff }
+      FILTER(?cnt = ?ff || (?ff = 1 && ?cnt < 1))
+    } GROUP BY ?fn }
+
+  OPTIONAL { SELECT ?fn (CONCAT(GROUP_CONCAT(DISTINCT ?n; separator=" · "), " · [action] · [message]") AS ?dAna) WHERE {
+      GRAPH <urn:functions> { ?fn rdf:type :EO ; :byRule "6_EO_analysis" }
+      BIND(IRI(REPLACE(REPLACE(REPLACE(STRBEFORE(STRAFTER(STR(?fn), "urn:fn:"), "%23EOa"), "%3A", ":"), "%2F", "/"), "%23", "#")) AS ?v)
+      ?v :viewDetField ?fd . ?fd :fieldName ?n .
+    } GROUP BY ?fn }
+  OPTIONAL { SELECT ?fn (GROUP_CONCAT(DISTINCT ?tn; separator=" · ") AS ?fAna) WHERE {
+      GRAPH <urn:functions> { ?fn rdf:type :EO ; :byRule "6_EO_analysis" }
+      BIND(IRI(REPLACE(REPLACE(REPLACE(STRBEFORE(STRAFTER(STR(?fn), "urn:fn:"), "%23EOa"), "%3A", ":"), "%2F", "/"), "%23", "#")) AS ?v)
+      ?v :viewFtrRef ?t0 . OPTIONAL { ?t0 :foldedInto ?tp } BIND(COALESCE(?tp, ?t0) AS ?t) ?t :modelName ?tn .
+    } GROUP BY ?fn }
+
+  BIND(IF(?byRule IN ("5_EO_report", "7_Wizard_EI"), "(mean measured on the development set)", ?none) AS ?fCal)
+  }
+  UNION
+  {
+    GRAPH <urn:functions> { ?fn a :EstimatedFunctionGroup ; :inModule ?mod ; :entryKind ?ek ; :txCategory ?tc ;
+                            :nCandidates ?nc ; :weight ?ufp }
+    OPTIONAL { ?cs a :CalibrationStat ; :entryKind ?ek ; :txCategory ?tc ; :pValue ?pv ; :mValue ?mv }
+    BIND("code-side estimate" AS ?type) BIND(CONCAT(?ek, " × ", ?tc) AS ?table) BIND(CONCAT("8_code_", ?ek) AS ?byRule)
+    BIND("estimate" AS ?complexity)
+    BIND(CONCAT("candidates ", STR(?nc), " × p ", STR(?pv), " × m ", STR(?mv)) AS ?dEst)
+  }
+}
+ORDER BY ?type ?table ?byRule ?eiOp

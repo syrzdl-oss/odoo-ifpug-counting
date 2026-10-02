@@ -1,0 +1,30 @@
+# S9 - System-level totals: the 34 applications counted as one system with one boundary.
+#      Data functions are deduplicated by table: a table that is an ILF of any application is an
+#      ILF of the system; otherwise it is an EIF (highest weight among the referencing applications).
+#      Transaction functions declared by applications are counted once each.
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?row (COUNT(*) AS ?functions) (ROUND(SUM(?u)) AS ?UFP)
+WHERE {
+  {
+    { SELECT ?k ?u ?part ?c0 WHERE {
+        { SELECT ?k (MAX(?score) AS ?s) WHERE {
+            GRAPH <urn:functions> { ?e a ?cls ; :ufp ?u0 ; :inModule ?h ; :onFile ?k . FILTER(?cls IN (:ILF, :EIF)) }
+            ?h :isApplication true .
+            BIND(?u0 + IF(?cls = :ILF, 1000, 0) AS ?score)
+          } GROUP BY ?k }
+        BIND(IF(?s >= 1000, ?s - 1000, ?s) AS ?u)
+        BIND(IF(?s >= 1000, "ILF", "EIF") AS ?part)
+        BIND(IF(?s >= 1000, IF(?u = 7, "low", IF(?u = 10, "average", "high")),
+                            IF(?u = 5, "low", IF(?u = 7, "average", "high"))) AS ?c0) } }
+    UNION
+    { SELECT DISTINCT ?k ?u ?part WHERE {
+        GRAPH <urn:functions> { ?k a ?tc ; :ufp ?u ; :declaredBy ?dm . FILTER(?tc IN (:EI, :EO, :EQ)) }
+        ?dm :isApplication true .
+        BIND("transactions" AS ?part) } }
+  }
+  VALUES ?grp { "part" "total" }
+  BIND(IF(?grp = "total", "4 total", IF(?part = "ILF", "1 ILF", IF(?part = "EIF", "2 EIF", "3 transactions"))) AS ?row)
+}
+GROUP BY ?row
+ORDER BY ?row

@@ -1,0 +1,12 @@
+# S3 - UFP per module and rule branch, attributed to the host module (:inModule).
+#      Only application modules are reported; remove the :isApplication line to include all modules.
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?inModule ?byRule (ROUND(SUM(?w)) AS ?UFP) (COUNT(*) AS ?items)
+WHERE {
+  GRAPH <urn:functions> { ?fn :inModule ?inModule ; :byRule ?byRule ; :weight ?w }
+  ?inModule :isApplication true .
+}
+GROUP BY ?inModule ?byRule ORDER BY ?inModule ?byRule

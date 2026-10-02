@@ -1,0 +1,11 @@
+# S8 - Assertion: no function carries a superclass type such as :BFC (expected result: 0).
+PREFIX : <http://example.org/odoo-ifpug#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT (COUNT(*) AS ?inferredParents)
+WHERE {
+  GRAPH <urn:functions> {
+    ?fn a ?p . FILTER(?p IN (:BFC, :DataFunction, :TransactionFunction))
+  }
+}
